@@ -1,11 +1,3 @@
-function addTwoNumbers(num1, num2) {
-  return num1 + num2;
-};
-
-console.log(addTwoNumbers(5, 6));
-console.log(addTwoNumbers('5', '6'));
-
-
 // ------ NUMBER DEFINITION ------
 // ------ STRING DEFINITION ------
 // ------ BOOLEAN DEFINITION ------
@@ -40,3 +32,29 @@ const fourthObject: object = {
 }
 
 // ------ ARRAY DEFINITION ------
+let firstArray = [] // any[]
+
+let secondArray = ['one', 'two'] // string[]
+
+let thirdArray = [1, 2] // number[]
+
+let fourthArray = [true, false] // boolean[]
+
+let fifthArray = ['one', 1, true] // (string | number | boolean)[]
+
+let sixthArray: string[] // string[]
+sixthArray = ['one', 'two']
+
+
+// ------ TUPLE DEFINITION ------
+// Option 1
+let person: [number, string];
+
+person = [40, 'peterson'] // correct
+
+person =['peterson', 40] // ERROR
+
+person = [40, 'peterson', 'james'] // ERROR
+
+// Option 2
+let identity: [number, string] = [2, 'james']

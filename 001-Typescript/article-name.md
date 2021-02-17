@@ -158,8 +158,51 @@ For this definition, we are again just defining our object with properties and l
 [1, 'second', false]
 ```
 
+Arrays in typescript can be strict or flexible depending on how we want them.
+
+Let's look at the type definitions below:
+```
+let firstArray = []   <--- // any[]
+
+let secondArray = ['one', 'two']   <--- // string[]
+
+let thirdArray = [1, 2]   <--- // number[]
+
+let fourthArray = [true, false]   <--- // boolean[]
+
+let fifthArray = ['one', 1, true]   <--- // (string | number | boolean)[]
+```
+or
+```
+let secondArray: string[]; <--- A string Array type
+
+secondArray = ['one', 'two']
+```
 
 
+`firstArray` is a flexible array as we did not explicitly state what kind of element the array would contain. On the other hand, `secondArray`, `thirdArray`, and `fourthArray` are strict arrays because the elements in each array are of one single type. `fifthArray` contains the different element types and so typescript identifies that the array can only contain each of the three types.
+
+In this scenario, we can modify our `fifthArray` with any element that matches each of the three types. What if we want to a strict type where we only want two elements in the array of a defined type. This is where we have a new type called `Tuple`.
+
+> Tuple
+```
+[1, 'a string']
+```
+
+A tuple is a special type provided by typescript that aims to give us more control over defining and handling elements. Tuple exists in other programming languages like Python but is not available in Javascript.
+
+A tuple can be defined as follows:
+```
+let person: [number, string];
+
+person = [40, 'peterson']    <--- // correct
+
+person = ['peterson', 40]    <--- // ERROR
+
+person = [40, 'peterson', 'james']    // ERROR --> Type '[number, string, string]' is not assignable to type '[number, string]'. Source has 3 element(s) but target allows only 2.
+```
+
+Looking at the definition above, we can get an idea of how powerful a `Tuple` is. We can define a fixed style of data structure and use it strictly. In the `person` tuple, we can only assign elements that match the types defined, and in addition, the elements must be exactly the same shape as the definition and the same length. Notice that if we try to add three elements to the tuple, we get an error as its only meant to have two elements.
 
 
 
