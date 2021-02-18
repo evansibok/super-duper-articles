@@ -1,14 +1,14 @@
-### What is Typescript?
+## What is Typescript?
 
 Typescript is commonly known as a Superset of Javascript. What does this mean? Typescript is a programming language built on top of Javascript. It introduces new features and advancements to the Javascript programming language. It offers the ability to use newer, more modern features when writing your Javascript code.
 
     Typescript can not be run in a Javascript environment like the browser.
 
-### How then does Typescript work?
+## How then does Typescript work?
 
 In addition to being a programming language, Typescript is also a compiler. It converts all Typescript codes to Javascript code so it can be run by environments that support Javascript, like your browser.
 
-### Why use Typescript?
+## Why use Typescript?
 
 Typescript in its simplest form is just typed javascript.
 
@@ -27,11 +27,11 @@ In Javascript, the function above will run and output without errors. In the fir
 
 Typescript aims to solve this in addition to adding a superpower to Javascript.
 
-### Typescript Basics
+## Typescript Basics
 
 ### Core Types and how to define them
 
-**Number**
+#### **Number**
 
 ```
 8, -4, 2.8
@@ -70,7 +70,7 @@ let someNumber = 5;
 Option 3 is a bit different because we aren't explicitly stating the type. We just define the variable `someNumber` and assign a value to it which is `5`. In this situation, typescript does something called `Type Inference`, where it uses the value assigned to infer the type that should be assigned to the variable. This is the same in all types definitions.
 
 
-**String**
+#### **String**
 
 ```
 'my word', "my word", `my word`
@@ -103,7 +103,7 @@ let someString = `this is some string ${name}`;
 
 We can see the exact same method of definition here like we did with the number type definition. We can either explicitly define the string variable type or let typescript infer it. We can use single quotes, double quotes or string literals as well.
 
-**Boolean**
+#### **Boolean**
 
 ```
 true, false
@@ -131,7 +131,7 @@ Option 3
 let isTruthy = true;
 ```
 
-**Object**
+#### **Object**
 
 ```
 {
@@ -183,7 +183,7 @@ const thirdObject = {
 
 For this definition, we are again just defining our object with properties and letting typescript infer the types based on the value we assign to the properties. I'm sure you're getting how this type definition thing works now.
 
-**Array**
+#### **Array**
 ```
 [1, 'second', false]
 ```
@@ -224,7 +224,7 @@ eightArray = [2, 6, 4]
 
 The method defined above uses what is called a `generic` array type definition. This works the same `let sampleArray: number[];` works. It is also a strict type array definition. What if we want to a strict type where we only want two elements in the array of a defined type. This is where we have a new type called `Tuple`.
 
-**Tuple**
+#### **Tuple**
 ```
 [1, 'a string']
 ```
@@ -232,6 +232,8 @@ The method defined above uses what is called a `generic` array type definition. 
 A tuple is a special type provided by typescript that aims to give us more control over defining and handling elements. Tuple exists in other programming languages like Python but is not available in Javascript.
 
 A tuple can be defined as follows:
+
+Option 1
 ```
 let person: [number, string];
 
@@ -244,6 +246,15 @@ person = [40, 'peterson', 'james']    // ERROR --> Type '[number, string, string
 
 Looking at the definition above, we can get an idea of how powerful a `Tuple` is. We can define a fixed style of data structure and use it strictly. In the `person` tuple, we can only assign elements that match the types defined, and in addition, the elements must be in exactly the same shape as the definition and the same length. Notice that if we try to add three elements to the tuple, we get an error as its only meant to have two elements.
 
+Option 2
+
+```
+let identity: [number, string] = [2, 'james'];
+
+identity = [20, 'Eren Yeager']; // Valid
+```
+For option 2, we initialize a value on the spot. A new value can be used to modify the existing tuple, as long as it matches the shape and length.
+
 Take a look at the code below:
 
 ```
@@ -253,15 +264,10 @@ animal = [5, 'goats'];
 
 animal.push('birds');
 ```
-> While a tuple is a fixed length definition, the caveat is, calling a method like `push()` on a tuple would actually work, as typescript does not throw an error when you push.
+While a tuple is a fixed length definition, one caveat is that calling a method like `push()` on a tuple would actually work, as typescript does not throw an error when you push. This is something you should keep in mind while using tuples.
+
+> Calling a method like `push()` on a tuple would actually work, as typescript does not throw an error when you push.
 >> This is something you should keep in mind while using tuples.
-
-
-
-
-
-
-<!-- Types -->
 
 ### <i>Other valid but not recommended ways of defining types</i>
 While there are situations where the methods below can be used, I wouldn't recommend using them, but if you have to, they should be used sparingly. The methods described above are my most recommended methods for type definitions.
@@ -279,11 +285,8 @@ const fourthObject: object = {
   color: 'red',
   age: 25
 }
-
-// Tuple
-let identity: [number, string] = [2, 'james']
 ```
-If you take a look at each definition shown in this section, you would notice that they are defined in a way where we explicitly 
+If you take a look at each definition shown in this section, you would notice that they are defined in a way where we explicitly state the type. In the `object` type definitions, we state the type as `object`, while this is okay, it doesn't properly define what type each property in the object should hold. So it isn't good practice to use this method
 
 
 <!-- Dealing with typescript files in VSCode -->

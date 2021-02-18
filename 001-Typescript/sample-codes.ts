@@ -61,6 +61,6 @@ person = [40, 'peterson'] // correct
 // person = [40, 'peterson', 'james'] // ERROR
 
 // Option 2
-let identity: [number, string] = [2, 'james']
+let identity: [number, string] = [2, 'james'];
 
-identity = [30, 'peterson']
+identity = [30, 'peterson'];
