@@ -33,9 +33,7 @@ Typescript aims to solve this in addition to adding a superpower to Javascript.
 
 #### **Number**
 
-```
-8, -4, 2.8
-```
+`8, -4, 2.8`
 
 Typescript regards all digits as a `number` type. Including single digits, negative integers and floating points.
 
@@ -71,10 +69,7 @@ Option 3 is a bit different because we aren't explicitly stating the type. We ju
 
 
 #### **String**
-
-```
-'my word', "my word", `my word`
-```
+`` 'my word', "my word", `my word` ``
 
 All text values are considered strings, whether it's single quotes, double quotes, or the newer string literals.
 
@@ -105,9 +100,8 @@ We can see the exact same method of definition here like we did with the number 
 
 #### **Boolean**
 
-```
-true, false
-```
+`true, false`
+
 Boolean has either a true(1) or a false(0) value.
 
 Boolean types can be defined as follows:
@@ -183,10 +177,27 @@ const thirdObject = {
 
 For this definition, we are again just defining our object with properties and letting typescript infer the types based on the value we assign to the properties. I'm sure you're getting how this type definition thing works now.
 
+##### *Other valid but not recommended ways of defining types*
+While there are situations where the methods below can be used, I wouldn't recommend using them, but if you have to, they should be used sparingly. The methods described above are my most recommended methods for type definitions.
+
+```
+// Object Type
+let thirdObject: object;
+thirdObject = {
+  color: 'red',
+  age: 25
+}
+
+// Object Type
+const fourthObject: object = {
+  color: 'red',
+  age: 25
+}
+```
+If you take a look at each definition shown in this section, you would notice that they are defined in a way where we explicitly state the type. In the `object` type definitions, we state the type as `object`, while this is okay, it doesn't properly define what type each property in the object should hold. So it isn't good practice to use this method.
+
 #### **Array**
-```
-[1, 'second', false]
-```
+`[1, 'second', false]`
 
 Arrays in typescript can be strict or flexible depending on how we want them.
 
@@ -225,9 +236,7 @@ eightArray = [2, 6, 4]
 The method defined above uses what is called a `generic` array type definition. This works the same `let sampleArray: number[];` works. It is also a strict type array definition. What if we want to a strict type where we only want two elements in the array of a defined type. This is where we have a new type called `Tuple`.
 
 #### **Tuple**
-```
-[1, 'a string']
-```
+`[1, 'a string']`
 
 A tuple is a special type provided by typescript that aims to give us more control over defining and handling elements. Tuple exists in other programming languages like Python but is not available in Javascript.
 
@@ -269,24 +278,38 @@ While a tuple is a fixed length definition, one caveat is that calling a method 
 > Calling a method like `push()` on a tuple would actually work, as typescript does not throw an error when you push.
 >> This is something you should keep in mind while using tuples.
 
-### <i>Other valid but not recommended ways of defining types</i>
-While there are situations where the methods below can be used, I wouldn't recommend using them, but if you have to, they should be used sparingly. The methods described above are my most recommended methods for type definitions.
+#### **Enum**
+`enum { VALUE1, VALUE2, ... }`
 
+Enums are available in some other programming languages but are not supported by Javascript natively. If we want to create an enum in javascript, we would define an object of the values with a `const` and then call `freeze` on the defined object. However, in typescript, we have enums out of the box.
+
+Enums are defined as follows:
 ```
-// Object Type
-let thirdObject: object;
-thirdObject = {
-  color: 'red',
-  age: 25
+enum Color = {
+  RED,
+  YELLOW,
+  BLUE
 }
 
-// Object Type
-const fourthObject: object = {
-  color: 'red',
-  age: 25
+// To assess it
+let paint: Color = Color.RED;
+```
+
+Enum are unique identifiers which hold a number value behind the scenes. You will mostly find enums written in all caps like `BLUE` but this isn't a restriction as the case it is written in doesn't matter. It can also be written as `Blue` and still function the same.
+
+`Color.RED` above isn't explicitly assigned a value as so the hidden value defaults to `0`, and `Color.YELLOW` becomes `1`, and so on. You catch the drift.
+
+You can explicitly define the value, just like we did below:
+```
+enum Color = {
+  RED = 100,
+  YELLOW,
+  BLUE
 }
 ```
-If you take a look at each definition shown in this section, you would notice that they are defined in a way where we explicitly state the type. In the `object` type definitions, we state the type as `object`, while this is okay, it doesn't properly define what type each property in the object should hold. So it isn't good practice to use this method
 
+In this example, `Color.RED` takes on the value of `100`, and since the values of `YELLOW` and `BLUE` aren't explicitly defined, they would become `101` and `102` respectively.
+
+> Note that you can assign whatever value you want to an Enum. The values aren't restricted to just numbers, they could also be strings.
 
 <!-- Dealing with typescript files in VSCode -->
