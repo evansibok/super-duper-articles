@@ -45,6 +45,10 @@ let fifthArray = ['one', 1, true] // (string | number | boolean)[]
 let sixthArray: string[] // string[]
 sixthArray = ['one', 'two']
 
+let seventhArray: string[] = ['one', 'two']
+
+let eigthArray: Array<number> = [3, 4, 7]
+
 
 // ------ TUPLE DEFINITION ------
 // Option 1
@@ -52,9 +56,11 @@ let person: [number, string];
 
 person = [40, 'peterson'] // correct
 
-person =['peterson', 40] // ERROR
+// person =['peterson', 40] // ERROR
 
-person = [40, 'peterson', 'james'] // ERROR
+// person = [40, 'peterson', 'james'] // ERROR
 
 // Option 2
 let identity: [number, string] = [2, 'james']
+
+identity = [30, 'peterson']

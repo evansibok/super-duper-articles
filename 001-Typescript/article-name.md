@@ -49,21 +49,26 @@ let someNumber: number;
 someNumber = 10;
 ```
 
-In option 1 above, we are explicitly stating the type of the variable `someNumber`. In this case, whatever value we assign to the variable in the future, typescript will treat it as a `number` type because we told typescript to do so. If we do this:
+In option 1 above, we are explicitly stating the type of the variable `someNumber`. This option works when we don't want to assign on the spot. In this case, whatever value we assign to the variable in the future, typescript will treat it as a `number` type because we told typescript to do so. If we do this:
+`someNumber = 'my name';`, typescript would throw an error as we are attempting to assign a `string` value to a variable that has a `number` type definition.
 
+Option 2
 ```
-someNumber = 'my name';
+let someNumber: number = 5;
+
+someNumber = 10;
 ```
 
-typescript would throw an error as we are attempting to assign a `string` value to a variable that has a `number` type definition.
+Option 2 works when we are assigning a value on the spot and we still want to explicitly state the type. We can still change the value of the variable `someNumber` in the future.
 
-Option2
+Option 3
 
 ```
 let someNumber = 5;
 ```
 
-Option 2 is a bit different because we aren't explicitly stating the type. We just define the variable `someNumber` and assign a value to it which is `5`. In this situation, typescript does something called `Type Inference`, where it uses the value assigned to infer the type that should be assigned to the variable. This is the same in all types definitions.
+Option 3 is a bit different because we aren't explicitly stating the type. We just define the variable `someNumber` and assign a value to it which is `5`. In this situation, typescript does something called `Type Inference`, where it uses the value assigned to infer the type that should be assigned to the variable. This is the same in all types definitions.
+
 
 > String
 
@@ -76,26 +81,34 @@ All text values are considered strings, whether it's single quotes, double quote
 For string types, we can define them as follows:
 
 Option 1
-
 ```
 let someString: string;
 
-someString = 'this is some string';
+someString = "a string value";
 ```
 
-Option2
-
+Option 2
 ```
-let someString = 'this is some string';
+let someString: string = 'first string';
+
+someString = 'new string value';
 ```
 
-We can see the exact same method of definition here like we did with the number type definition. We can either explicitly define the string variable type or let typescript infer it.
+Option 3
+```
+let name: string = 'peter';
+
+let someString = `this is some string ${name}`;
+```
+
+We can see the exact same method of definition here like we did with the number type definition. We can either explicitly define the string variable type or let typescript infer it. We can use single quotes, double quotes or string literals as well.
 
 > Boolean
 
 ```
 true, false
 ```
+Boolean has either a true(1) or a false(0) value.
 
 Boolean types can be defined as follows:
 
@@ -107,7 +120,12 @@ let isTruthy: boolean;
 isTruthy = false;
 ```
 
-Option2
+Option 2
+```
+let isTruthy: boolean = true;
+```
+
+Option 3
 
 ```
 let isTruthy = true;
@@ -122,7 +140,7 @@ let isTruthy = true;
   isEmployed: true
 }
 ```
-Objects of course look the same way as in javascript.
+Objects of course look the same way in javascript.
 
 We can define objects in the following ways:
 
@@ -143,9 +161,21 @@ firstObject = {
 By paying close attention to option 1 above, you notice this method of definition is a bit different. We define the object with its properties and explicitly state the types for each property. If we try to assign a different value type to the properties, of course we will get an error.
 
 Option 2
+```
+let secondObject: {
+  color: string;
+  age: number;
+} = {
+  color: 'red',
+  age: 25
+}
+```
+The definition in option 2 above becomes useful when we want to assign value on the spot. It still makes use of the object type definition with other types as properties.
+
+Option 3
 
 ```
-const secondObject = {
+const thirdObject = {
   color: 'red',
   age: 25
 }
@@ -161,6 +191,8 @@ For this definition, we are again just defining our object with properties and l
 Arrays in typescript can be strict or flexible depending on how we want them.
 
 Let's look at the type definitions below:
+
+Option 1
 ```
 let firstArray = []   <--- // any[]
 
@@ -171,18 +203,24 @@ let thirdArray = [1, 2]   <--- // number[]
 let fourthArray = [true, false]   <--- // boolean[]
 
 let fifthArray = ['one', 1, true]   <--- // (string | number | boolean)[]
+
+let sixthArray: string[]; <--- A string Array type
+
+sixthArray = ['one', 'two']
+
 ```
-or
+
+`firstArray` is a flexible array as we did not explicitly state what kind of element the array would contain. On the other hand, `secondArray`, `thirdArray`, and `fourthArray` are strict arrays because the elements in each array are of one single type. `fifthArray` contains different element types and so typescript identifies that the array can only contain each of the three types.
+In this scenario, we can modify our `fifthArray` with any element that matches each of the three types.
+
+Option 2
 ```
-let secondArray: string[]; <--- A string Array type
+let seventhArray: Array<number>;
 
-secondArray = ['one', 'two']
+seventhArray = [2, 6, 4]
 ```
 
-
-`firstArray` is a flexible array as we did not explicitly state what kind of element the array would contain. On the other hand, `secondArray`, `thirdArray`, and `fourthArray` are strict arrays because the elements in each array are of one single type. `fifthArray` contains the different element types and so typescript identifies that the array can only contain each of the three types.
-
-In this scenario, we can modify our `fifthArray` with any element that matches each of the three types. What if we want to a strict type where we only want two elements in the array of a defined type. This is where we have a new type called `Tuple`.
+The method defined above uses what is called a `generic` array type definition. This works the same `let sampleArray: number[];` works. It is also a strict type array definition. What if we want to a strict type where we only want two elements in the array of a defined type. This is where we have a new type called `Tuple`.
 
 > Tuple
 ```
@@ -202,7 +240,7 @@ person = ['peterson', 40]    <--- // ERROR
 person = [40, 'peterson', 'james']    // ERROR --> Type '[number, string, string]' is not assignable to type '[number, string]'. Source has 3 element(s) but target allows only 2.
 ```
 
-Looking at the definition above, we can get an idea of how powerful a `Tuple` is. We can define a fixed style of data structure and use it strictly. In the `person` tuple, we can only assign elements that match the types defined, and in addition, the elements must be exactly the same shape as the definition and the same length. Notice that if we try to add three elements to the tuple, we get an error as its only meant to have two elements.
+Looking at the definition above, we can get an idea of how powerful a `Tuple` is. We can define a fixed style of data structure and use it strictly. In the `person` tuple, we can only assign elements that match the types defined, and in addition, the elements must be in exactly the same shape as the definition and the same length. Notice that if we try to add three elements to the tuple, we get an error as its only meant to have two elements.
 
 
 
@@ -210,15 +248,11 @@ Looking at the definition above, we can get an idea of how powerful a `Tuple` is
 
 
 <!-- Types -->
-<!-- Include the third option of defining types -->
+
+### <i>Other valid but not recommended ways of defining types</i>
+While there are situations where the methods below can be used, I wouldn't recommend using them, but if you had to, they should be used sparingly. The methods described above are my most recommended methods for type definitions
 
 ```
-// Number Type
-let myNumber: number = 5;
-
-// String Type
-let myString: string = 'this is my string';
-
 // Boolean Type
 let myBoolean: boolean = false;
 
@@ -234,6 +268,14 @@ const fourthObject: object = {
   color: 'red',
   age: 25
 }
+
+// Array Type
+let seventhArray: string[] = ['one', 'two']
+
+// Tuple
+let identity: [number, string] = [2, 'james']
 ```
+If you take a look at each definition shown in this section, you would notice that they are defined in a way where we explicitly 
+
 
 <!-- Dealing with typescript files in VSCode -->
