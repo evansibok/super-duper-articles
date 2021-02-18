@@ -47,7 +47,7 @@ sixthArray = ['one', 'two']
 
 let seventhArray: string[] = ['one', 'two']
 
-let eigthArray: Array<number> = [3, 4, 7]
+let eightArray: Array<number> = [3, 4, 7]
 
 
 // ------ TUPLE DEFINITION ------
