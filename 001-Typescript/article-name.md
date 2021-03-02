@@ -1,3 +1,5 @@
+# Introduction to Typescript and Basic Types
+
 ## What is Typescript?
 
 Typescript is commonly known as a Superset of Javascript. What does this mean? Typescript is a programming language built on top of Javascript. It introduces new features and advancements to the Javascript programming language. It offers the ability to use newer, more modern features when writing your Javascript code.
@@ -312,4 +314,10 @@ In this example, `Color.RED` takes on the value of `100`, and since the values o
 
 > Note that you can assign whatever value you want to an Enum. The values aren't restricted to just numbers, they could also be strings.
 
-<!-- Dealing with typescript files in VSCode -->
+**Conclusion**:
+
+Typescript, which was first introduced in 2012 by Microsoft has become an incredible tool for Javascript developers, permitting type checking during development to prevent unforeseen errors. As more developers and organisations continue to adopt it, its popularity is bound to keep increasing. Whether you choose to use it in your project or not is entirely up to you.
+
+If you however choose to adopt it, you would find a wealth of information on the Official Typescript Documentation.
+
+Till next time! Ciao!
