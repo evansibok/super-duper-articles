@@ -316,8 +316,8 @@ In this example, `Color.RED` takes on the value of `100`, and since the values o
 
 **Conclusion**:
 
-Typescript, which was first introduced in 2012 by Microsoft has become an incredible tool for Javascript developers, permitting type checking during development to prevent unforeseen errors. As more developers and organisations continue to adopt it, its popularity is bound to keep increasing. Whether you choose to use it in your project or not is entirely up to you.
+Typescript, which was first introduced in 2012 by Microsoft has become an incredible tool for Javascript developers, permitting type checking during development to prevent unforeseen errors. As more developers and organisations continue to adopt it and in addition to it being open-source, its popularity is bound to keep increasing. Whether you choose to use it in your project or not is entirely up to you.
 
-If you however choose to adopt it, you would find a wealth of information on the Official Typescript Documentation.
+If you however choose to adopt it, you would find a wealth of information on the [Official Typescript Documentation](https://typescriptlang.org/docs).
 
 Till next time! Ciao!
