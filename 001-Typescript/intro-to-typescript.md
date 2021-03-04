@@ -1,3 +1,10 @@
+![Code on a laptop screen!](https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=80)
+
+**Cover Image Credits**: Photo by *[Luca Bravo](https://unsplash.com/@lucabravo)*
+
+## Introduction
+Typescript has become quite the popular topic of discussion among developers and companies in the tech space. So, what exactly is this Typescript everyone's talking about? This article will attempt to explain Typescript in the simplest form possible and also introduce you the basic types available. 
+
 ## What is Typescript?
 Typescript is commonly known as a Superset of Javascript. What does this mean? Typescript is a programming language built on top of Javascript. It introduces new features and advancements to the Javascript programming language. It offers the ability to use newer, more modern features when writing your Javascript code.
 
@@ -7,7 +14,7 @@ Typescript is commonly known as a Superset of Javascript. What does this mean? T
 In addition to being a programming language, Typescript is also a compiler. It converts all Typescript codes to Javascript code so it can be run by environments that support Javascript, like your browser.
 
 ## Why use Typescript?
-Typescript in its simplest form is just typed javascript.
+Typescript in its simplest form is just ***typed*** javascript.
 
 Take the below code for example:
 ```
@@ -25,9 +32,9 @@ Typescript aims to solve this, in addition to adding other superpowers to Javasc
 
 ## Typescript Basics
 
-### Core Types and how to define them
+**Core Types and how to define them**
 
-#### *Number*
+### *Number*
 ```
 8, -4, 2.8
 ```
@@ -67,7 +74,7 @@ let someNumber = 5;
 Option 3 is a bit different because we aren't explicitly stating the type. We just define the variable `someNumber` and assign a value to it which is `5`. In this situation, typescript does something called `Type Inference`, where it uses the value assigned to infer the type that should be assigned to the variable. This is the same in all type definitions.
 
 
-#### *String*
+### *String*
 ```
 'my word', "my word", `my word`
 ```
@@ -102,7 +109,7 @@ let someString = `this is some string ${name}`;
 
 We can see the exact same method of definition here like we did with the number type definition. We can either explicitly define the string variable type or let typescript infer it. We can use single quotes, double quotes or string literals as well.
 
-#### *Boolean*
+### *Boolean*
 
 ```
 true, false
@@ -132,7 +139,7 @@ let isTruthy: boolean = true;
 let isTruthy = true;
 ```
 
-#### *Object*
+### *Object*
 
 ```
 {
@@ -207,7 +214,7 @@ let fourthObject: object = {
 
 If you take a look at each object definition shown in the snippet above, you will notice that they are defined in a way where we explicitly state the type: `object`. While this is okay, it doesn't properly define what type each individual property in the object should hold. So it isn't good practice to use this method as it isn't readable.
 
-#### *Array*
+### *Array*
 
 ```
 [1, 'second', false]
@@ -250,7 +257,7 @@ eightArray = [2, 6, 4]
 
 The method defined above uses what is called a `generic` array type definition. This works the same way `let sampleArray: number[];` works. It is also a *strict* type array definition. What if we want a strict type where we only want two elements in the array of a defined type. This is where we can use a new type called `Tuple`.
 
-#### *Tuple*
+### *Tuple*
 
 ```
 [1, 'a string']
@@ -303,7 +310,7 @@ The below code is the result of calling `push` on the tuple above:
 > Calling a method like `push()` on a tuple would actually work, as typescript does not throw an error when you push.
 >> This is something you should keep in mind while using tuples.
 
-#### *Enum*
+### *Enum*
 
 ```
 enum { VALUE1, VALUE2, ... }
@@ -342,7 +349,7 @@ In this example, `Color.RED` takes on the value of `100`, and since the values o
 
 > You can assign whatever value you want to an Enum. The values aren't restricted to just numbers, they could also be strings.
 
-### **Conclusion**:
+## **Conclusion**:
 
 Typescript, which was first introduced in 2012 by Microsoft has become an incredible tool for Javascript developers, permitting type checking during development to prevent unforeseen errors. As more developers and organizations continue to adopt it and in addition to it being open-source, its popularity is bound to keep increasing. Whether you choose to use it in your project or not is entirely up to you.
 
