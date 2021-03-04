@@ -215,7 +215,7 @@ If you take a look at each object definition shown in the snippet above, you wil
 
 Arrays in typescript can be *strict* or *flexible* depending on how we want them.
 
-Let's look at the type definitions below:
+Array type can be defined in the following ways:
 
 - Option 1
 
@@ -230,7 +230,7 @@ let fourthArray = [true, false]   <--- // boolean[]
 
 let fifthArray = ['one', 1, true]   <--- // (string | number | boolean)[]
 
-let sixthArray: string[]; <--- A string Array type
+let sixthArray: string[]; <--- // A string Array type
 
 sixthArray = ['one', 'two']
 
@@ -309,7 +309,7 @@ The below code is the result of calling `push` on the tuple above:
 enum { VALUE1, VALUE2, ... }
 ```
 
-Enums are available in some other programming languages but are not supported by Javascript natively. If we want to create an enum in javascript, we would define an object of the values with a `const` and then call `freeze` on the defined object.
+An enum is a user-defined data type. It is made up of named *constant* values that are normally referred to as *enumerators*, hence the name: **Enum**. Behind the scenes, the values are held as integers. Enums are natively available in other programming languages, like Java, Python, and others, but are not supported by Javascript natively. If we want to create an enum in javascript, we would define an object of the values with a `const` and then call `freeze` on the defined object.
 
 However, in typescript, we have enums out of the box.
 
@@ -325,7 +325,7 @@ enum Color = {
 let paint: Color = Color.RED;
 ```
 
-Enums are unique identifiers that hold number values behind the scenes. You will mostly find enums written in all caps like `BLUE` but this isn't a restriction, as the case it is written in doesn't matter. It can also be written as `Blue` and still function the same.
+One use case for Enums would be to have pre-defined constant names for role-based authorization. This prevents us from having to type the roles for every single usage. You will mostly find enums written in all caps like `BLUE` but this isn't a restriction, as the case it is written in doesn't matter. It can also be written as `Blue` and still function the same.
 
 `Color.RED` above isn't explicitly assigned a value, so the hidden value defaults to `0`, and `Color.YELLOW` becomes `1`, and so on. You catch the drift 😁.
 
@@ -340,13 +340,14 @@ enum Color = {
 
 In this example, `Color.RED` takes on the value of `100`, and since the values of `YELLOW` and `BLUE` aren't explicitly defined, they would become `101` and `102` respectively.
 
-> Note that you can assign whatever value you want to an Enum. The values aren't restricted to just numbers, they could also be strings.
+> You can assign whatever value you want to an Enum. The values aren't restricted to just numbers, they could also be strings.
 
 ### **Conclusion**:
 
 Typescript, which was first introduced in 2012 by Microsoft has become an incredible tool for Javascript developers, permitting type checking during development to prevent unforeseen errors. As more developers and organizations continue to adopt it and in addition to it being open-source, its popularity is bound to keep increasing. Whether you choose to use it in your project or not is entirely up to you.
 
 If you however choose to adopt it, you would find a wealth of information on the [Official Typescript Documentation](https://www.typescriptlang.org/docs/).
+
 
 
 If there are other typescript topics you'd like me to write on, you can drop a comment below 👇
