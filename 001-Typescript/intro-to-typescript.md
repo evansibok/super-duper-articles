@@ -2,7 +2,7 @@
 
 **Cover Image Credits**: Photo by *[Luca Bravo](https://unsplash.com/@lucabravo)*
 
-## Introduction
+
 Typescript has become quite the popular topic of discussion among developers and companies in the tech space. So, what exactly is this Typescript everyone's talking about? This article will attempt to explain Typescript in the simplest form possible and also introduce you to the basic types available. 
 
 ## What is Typescript?
