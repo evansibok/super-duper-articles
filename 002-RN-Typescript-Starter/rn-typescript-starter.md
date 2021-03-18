@@ -1,6 +1,6 @@
-![Code on a laptop screen!](https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=80)
+![Android Emulator Image!](https://images.unsplash.com/photo-1604536264507-020ce894daf1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80)
 
-**Cover Image Credits**: Photo by *[Luca Bravo](https://unsplash.com/@lucabravo)*
+**Cover Image Credits**: Photo by *[Muhammad Rosyid Izzulkhaq](https://unsplash.com/@rsdiz)*
 
 For javascript developers out here, I'm certain we've all heard about the popular kids on the block. I'm talking about React (Web application Development), React Native (Cross platform mobile app development) and Typescript (The gateway to javascript superpowers).
 
@@ -135,7 +135,12 @@ This will run the `"android"` command in the `"scripts"` section of your package
 
 After the application has finished installing on the virtual device. You should see the demo application open on the virtual device.
 
-Voila! You just created and setup a React Native application with Typescript support from scratch.
+
+## Conclusion
+
+**Voila! 🎉🎉🎉**
+
+You just created and setup a React Native application with Typescript support from scratch.
 
 Next, we will setup Authentication/Authorization routes for our application using React Navigation.
 
