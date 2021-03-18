@@ -11,5 +11,22 @@ For React we can take a look at it in another post. Since our focus is on React 
 ## Introduction
 This post will show you how to start up a brand new React Native Typescript project and setup basic navigation routes for easy authentication and authorization.
 
+We will work on a sample app, for now let's call this app: **Truth**
+
 Without much ado, let's get started!!!
+
+## Initialising a new React Native App
+First move into a folder you want to create your application. For me, that folder is `projects`.
+
+After moving into your folder, run the command below to create a new react native application with typescript support:
+```
+// If you have the react native cli installed globally in your machine
+react-native init truth --template react-native-template-typescript
+
+
+// If you don't have the react native cli installed globally
+npx react-native init truth --template react-native-template-typescript
+```
+
+The command above uses the official `react-native-cli` to create a new application called `truth` and installs a template with typescript support.
 
