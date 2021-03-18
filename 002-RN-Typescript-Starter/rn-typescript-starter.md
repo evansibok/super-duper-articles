@@ -2,7 +2,7 @@
 
 **Cover Image Credits**: Photo by *[Muhammad Rosyid Izzulkhaq](https://unsplash.com/@rsdiz)*
 
-For javascript developers out there, I'm certain we've all heard about the popular kids on the block. I'm talking about React (Web application Development), React Native (Cross-platform mobile app development), and Typescript (The gateway to javascript superpowers).
+For javascript developers out there, I'm certain we've all heard about the popular kids on the block. I'm talking about React (Web application Development), React Native (Cross-platform mobile app development), and Typescript (A javascript superset with static typing).
 
 If you haven't heard about Typescript, here's a blog post that serves as an [Introduction to Typescript and its Basic Types](../001-Typescript/intro-to-typescript.md).
 
@@ -16,7 +16,10 @@ We will work on a sample app, for now, let's call this app: **Truth**
 Without much ado, let's get started!!!
 
 ## Initialize a new React Native App
-1. Move into a folder you want to create your application in. For me, that folder is `projects`.
+
+- **Move into a folder you want to create your application in.**
+
+For me, that folder is `projects`.
 
 After moving into your folder, run the command below to create a new react native application with typescript support:
 ```
@@ -30,17 +33,18 @@ If you don't want to install the `react-native-cli` global package you can run t
 npx react-native init truth --template react-native-template-typescript
 ```
 
-2. Move into the app project directory.
+- **Move into the app project directory.**
+
 ```
 cd truth
 ```
 The code above takes us into the newly created app folder.
 
-3. Open the application in your code editor of choice.
+- **Open the application in your code editor of choice.**
 
 The application folder structure should look like this:
 
-![something](images/rn-folder-structure.png)
+![truth folder structure](images/rn-folder-structure.png)
 
 ## Finalize configuration
 If you look at the project structure image above, you would see that we have a `tsconfig.json` file. This is the file where our typescript configurations live in.
@@ -48,7 +52,8 @@ If you look at the project structure image above, you would see that we have a `
 Before we proceed to run our app, we will have to add custom path mappings for our project to make it easier for folder access and navigation.
 
 To do this:
-1. Open the `tsconfig.json` file, find the lines of code that look like these that have been commented out:
+
+- **Open the `tsconfig.json` file, find the lines of code that look like these that have been commented out**:
 ```
 "baseUrl": './',
 "paths": {},
@@ -70,7 +75,7 @@ The `tests` path tells typescript to read everything that lives in the `tests` f
 
 The `@components/*` path is to read everything in the components folder. We will create this folder in the future as well.
 
-2. Add `babel-plugin-module-resolver` to resolve our custom path mappings.
+- **Add `babel-plugin-module-resolver` to resolve our custom path mappings.**
 
 Run the code below inside your application root folder in your terminal
 ```
@@ -78,7 +83,7 @@ npm install -D babel-plugin-module-resolver
 ```
 This should add the `babel-plugin-module-resolver` to your package.json dev dependencies.
 
-3. Locate and update the `babel.config.js` file
+- **Locate and update the `babel.config.js` file**
 
 Go to your `babel.config.js` file, you'll find a file that looks like this:
 ```
@@ -134,8 +139,7 @@ This will run the `"android"` command in the `"scripts"` section of your package
 
 After the application has finished installing on the virtual device. You should see the demo application open on the virtual device that looks like the image below.
 
-![](images/truth-emulator.png)
-
+![truth emulator](images/truth-emulator.png)
 
 ## Conclusion
 
