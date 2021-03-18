@@ -133,7 +133,9 @@ npm run android
 
 This will run the `"android"` command in the `"scripts"` section of your package.json file which will run and install the application on our virtual device.
 
-After the application has finished installing on the virtual device. You should see the demo application open on the virtual device.
+After the application has finished installing on the virtual device. You should see the demo application open on the virtual device that looks like the image below.
+
+![](images/truth-emulator.png)
 
 
 ## Conclusion
