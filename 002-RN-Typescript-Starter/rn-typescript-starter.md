@@ -2,16 +2,16 @@
 
 **Cover Image Credits**: Photo by *[Muhammad Rosyid Izzulkhaq](https://unsplash.com/@rsdiz)*
 
-For javascript developers out here, I'm certain we've all heard about the popular kids on the block. I'm talking about React (Web application Development), React Native (Cross platform mobile app development) and Typescript (The gateway to javascript superpowers).
+For javascript developers out there, I'm certain we've all heard about the popular kids on the block. I'm talking about React (Web application Development), React Native (Cross-platform mobile app development), and Typescript (The gateway to javascript superpowers).
 
 If you haven't heard about Typescript, here's a blog post that serves as an [Introduction to Typescript and its Basic Types](../001-Typescript/intro-to-typescript.md).
 
-For React we can take a look at it in another post. Since our focus is on React Native and Typescript, that is what we will be focusing on this post.
+For React we can take a look at it in another post. Since our focus is on React Native and Typescript, that is what we will be focusing on in this post.
 
 ## Introduction
 This post will show you how to start up a brand new React Native Typescript project and setup basic navigation routes for easy authentication and authorization.
 
-We will work on a sample app, for now let's call this app: **Truth**
+We will work on a sample app, for now, let's call this app: **Truth**
 
 Without much ado, let's get started!!!
 
@@ -20,13 +20,12 @@ Without much ado, let's get started!!!
 
 After moving into your folder, run the command below to create a new react native application with typescript support:
 ```
-
 react-native init truth --template react-native-template-typescript
 ```
 
-The command above uses the official `react-native-cli` to create a new application called `truth` and installs a template with typescript support. You must have the react-native-cli package installed globally on your machine for the code above to work.
+The command above uses the official `react-native-cli` to create a new application called `truth` and installs a template with typescript support. You must have the `react-native-cli` package installed globally on your machine for the code above to work.
 
-If you don't want to install the react-native-cli global package you can run the code below to get the same results. Like this:
+If you don't want to install the `react-native-cli` global package you can run the code below to get the same results. Like this:
 ```
 npx react-native init truth --template react-native-template-typescript
 ```
@@ -46,7 +45,7 @@ The application folder structure should look like this:
 ## Finalize configuration
 If you look at the project structure image above, you would see that we have a `tsconfig.json` file. This is the file where our typescript configurations live in.
 
-Before we proceed to running our app, we will have to add custom path mappings for our project to make it easier for folder access and navigation.
+Before we proceed to run our app, we will have to add custom path mappings for our project to make it easier for folder access and navigation.
 
 To do this:
 1. Open the `tsconfig.json` file, find the lines of code that look like these that have been commented out:
@@ -63,7 +62,7 @@ Uncomment the `baseUrl` line, and replace the `paths` line with the following co
 },
 ```
 
-What we're doing here is setting the base url path to be the project root folder and adding paths that would automatically resolve to the ones we added in the code above.
+What we're doing here is setting the base URL path to be the project root folder and adding paths that would automatically resolve to the ones we added in the code above.
 
 The `*` path sets the base path for the `src` folder which we will create later. The `src` folder is where all our code files for the application will live in.
 
@@ -111,7 +110,7 @@ Now we can proceed to run our application and try it out.
 ## Running our Application (Android)
 To run our newly created application and to see if it works properly, we would need to startup our application.
 
-One way to test this is to use an emulator. In this case, we will be using the Android Emulator available to us from `Android Studio`. Which means we will be running our application on a virtual android device.
+One way to test this is to use an emulator. In this case, we will be using the Android Emulator available to us from `Android Studio`. This means we will be running our application on a virtual android device.
 
 ### Step 1
 Startup your emulator of choice. Make sure you have a virtual device running.
@@ -142,8 +141,8 @@ After the application has finished installing on the virtual device. You should 
 
 **Voila! 🎉🎉🎉**
 
-You just created and setup a React Native application with Typescript support from scratch.
+You just created and set up a React Native application with Typescript support from scratch.
 
 Next, we will setup Authentication/Authorization routes for our application using React Navigation.
 
-Thank you and see you on the next post.
+Thank you and see you in the next post.
