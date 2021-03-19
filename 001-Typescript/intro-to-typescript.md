@@ -1,9 +1,8 @@
-![Code on a laptop screen!](https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80)
-
+![Code on a laptop screen!](https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=80)
 **Cover Image Credits**: Photo by *[Luca Bravo](https://unsplash.com/@lucabravo)*
 
 
-Typescript has become quite the popular topic of discussion among developers and companies in the tech space. So, what exactly is this Typescript everyone's talking about? This article will attempt to explain Typescript in the simplest form possible and also introduce you to the basic types available.
+Typescript has become quite the popular topic of discussion among developers and companies in the tech space. So, what exactly is this Typescript everyone's talking about? This article will attempt to explain Typescript in the simplest form possible and also introduce you to the basic types available. 
 
 ## What is Typescript?
 Typescript is commonly known as a Superset of Javascript. What does this mean? Typescript is a programming language built on top of Javascript. It introduces new features and advancements to the Javascript programming language. It offers the ability to use newer, more modern features when writing your Javascript code.

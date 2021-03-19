@@ -1,27 +1,30 @@
 ![Android Emulator Image!](https://images.unsplash.com/photo-1604536264507-020ce894daf1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80)
 
+
 **Cover Image Credits**: Photo by *[Muhammad Rosyid Izzulkhaq](https://unsplash.com/@rsdiz)*
 
-For javascript developers out there, I'm certain we've all heard about the popular kids on the block. I'm talking about React (Web application Development), React Native (Cross-platform mobile app development), and Typescript (A javascript superset with static typing).
+For Javascript developers out there, I'm certain we've all heard about the popular kids on the block. I'm talking about React Native (A Cross-platform mobile app development library) and Typescript (A Javascript superset with static typing).
 
-If you haven't heard about Typescript, here's a blog post that serves as an [Introduction to Typescript and its Basic Types](../001-Typescript/intro-to-typescript.md).
+If you haven't heard about Typescript, here's a blog post that serves as an [Introduction to Typescript and its Basic Types](https://blog.evansibok.com/introduction-to-typescript-and-its-basic-types).
 
-For React we can take a look at it in another post. Since our focus is on React Native and Typescript, that is what we will be focusing on in this post.
+### Prerequisite
+1. A basic understanding of Javascript and React
+2. Has already setup development environment for React Native, otherwise, refer to the [React Native Environment Setup Guide](https://reactnative.dev/docs/environment-setup)
 
 ## Introduction
-This post will show you how to start up a brand new React Native Typescript project and setup basic navigation routes for easy authentication and authorization.
+In this post, we will begin our [building-in-public](https://blog.evansibok.com/series/truth) series, where we will learn how to initialize a new React Native project with Typescript support.
 
-We will work on a sample app, for now, let's call this app: **Truth**
+We will focus on initializing a sample application with all its project files.
 
-Without much ado, let's get started!!!
+Without further ado, let's get started!
 
 ## Initialize a new React Native App
 
-- **Move into a folder you want to create your application in.**
+- **Cd into a folder where you want to create your application.**
 
 For me, that folder is `projects`.
 
-After moving into your folder, run the command below to create a new react native application with typescript support:
+When you're inside the folder, run the command below to create a new react native application with typescript support:
 ```
 react-native init truth --template react-native-template-typescript
 ```
@@ -33,12 +36,13 @@ If you don't want to install the `react-native-cli` global package you can run t
 npx react-native init truth --template react-native-template-typescript
 ```
 
-- **Move into the app project directory.**
+
+- **Cd into the app project directory.**
 
 ```
 cd truth
 ```
-The code above takes us into the newly created app folder.
+The code above enables us to navigate into the newly created app folder.
 
 - **Open the application in your code editor of choice.**
 
@@ -47,7 +51,7 @@ The application folder structure should look like this:
 ![truth folder structure](images/rn-folder-structure.png)
 
 ## Finalize configuration
-If you look at the project structure image above, you would see that we have a `tsconfig.json` file. This is the file where our typescript configurations live in.
+If you look at the project structure image above, you will see that we have a `tsconfig.json` file. This is the file where our typescript configurations live in.
 
 Before we proceed to run our app, we will have to add custom path mappings for our project to make it easier for folder access and navigation.
 
@@ -58,7 +62,7 @@ To do this:
 "baseUrl": './',
 "paths": {},
 ```
-Uncomment the `baseUrl` line, and replace the `paths` line with the following code:
+- **Uncomment the `baseUrl` line, and replace the `paths` line with the following code**:
 ```
 "paths": {
   "*": ["src/*"],
@@ -67,25 +71,25 @@ Uncomment the `baseUrl` line, and replace the `paths` line with the following co
 },
 ```
 
-What we're doing here is setting the base URL path to be the project root folder and adding paths that would automatically resolve to the ones we added in the code above.
+What we're doing here is setting the base URL path to be the project root folder and adding paths that will automatically resolve to the ones we added in the code above.
 
 The `*` path sets the base path for the `src` folder which we will create later. The `src` folder is where all our code files for the application will live in.
 
-The `tests` path tells typescript to read everything that lives in the `tests` folder. Useful for running tests.
+The `tests` path tells typescript to read every file that lives in the `tests` folder. Useful when running tests.
 
-The `@components/*` path is to read everything in the components folder. We will create this folder in the future as well.
+The `@components/*` path is to read every file in the components folder. We will create this folder in the future as well.
 
-- **Add `babel-plugin-module-resolver` to resolve our custom path mappings.**
+- **Add `babel-plugin-module-resolver` to our project dependency to resolve our custom path mappings.**
 
-Run the code below inside your application root folder in your terminal
+Run the code below in the terminal of your application root folder
 ```
 npm install -D babel-plugin-module-resolver
 ```
-This should add the `babel-plugin-module-resolver` to your package.json dev dependencies.
+This should add the `babel-plugin-module-resolver` to your package.json development dependencies.
 
 - **Locate and update the `babel.config.js` file**
 
-Go to your `babel.config.js` file, you'll find a file that looks like this:
+When you open the`babel.config.js` file in your project root directory, you'll find a file that looks like this:
 ```
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
@@ -113,9 +117,7 @@ This configuration makes it possible for babel to resolve the typescript configu
 Now we can proceed to run our application and try it out.
 
 ## Running our Application (Android)
-To run our newly created application and to see if it works properly, we would need to startup our application.
-
-One way to test this is to use an emulator. In this case, we will be using the Android Emulator available to us from `Android Studio`. This means we will be running our application on a virtual android device.
+To run our newly created application, we will use an android emulator available to us from `Android Studio` to test the android version of our app.
 
 ### Step 1
 Startup your emulator of choice. Make sure you have a virtual device running.
@@ -140,6 +142,11 @@ This will run the `"android"` command in the `"scripts"` section of your package
 After the application has finished installing on the virtual device. You should see the demo application open on the virtual device that looks like the image below.
 
 ![truth emulator](images/truth-emulator.png)
+
+
+**Resources**:
+1. If you're not familiar with Android Studio, learn more about it on the [Official Android Studio Documentation](https://developer.android.com/studio).
+2. For a more in-depth approach to running a React Native application, refer to the [Official React Native Docs](https://reactnative.dev/docs/running-on-device).
 
 ## Conclusion
 
