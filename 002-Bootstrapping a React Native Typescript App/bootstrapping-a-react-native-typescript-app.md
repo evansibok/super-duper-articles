@@ -146,7 +146,7 @@ After the application has finished installing on the virtual device. You should 
 
 **Resources**:
 1. If you're not familiar with Android Studio, learn more about it on the [Official Android Studio Documentation](https://developer.android.com/studio).
-2. For a more in-depth approach to running a React Native application, refer to the [Official React Native Docs](https://reactnative.dev/docs/running-on-device).
+2. For a more in-depth approach to running a React Native application, refer to the [Official React Native Documentation](https://reactnative.dev/docs/running-on-device).
 
 ## Conclusion
 
