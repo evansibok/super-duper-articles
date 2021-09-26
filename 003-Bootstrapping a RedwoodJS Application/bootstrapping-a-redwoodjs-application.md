@@ -66,9 +66,26 @@ node =14.x
 yarn >=1.15
 ```
 
-Run the command below in your terminal to create a new Redwood app
-``
+- Run the command below in your terminal to create a new Redwood app:
 
+```
+yarn create redwood-app ./thankful
+```
+This will start the process of creating a fresh application from scratch and installing `create-redwood-app` package globally on your machine using Yarn. Once the process is completed, you'll find a `thankful` directory which is where all of our application will live moving forward.
+
+- Move into the application directory
+```
+cd thankful
+```
+- Start the application in development
+```
+yarn redwood dev
+```
+A browser will automatically open up to the url `http://localhost:8910` showing the screen below:
+
+![truth folder structure](images/bootstrapped-home.png)
+
+Well done, our application is up and running and ready for development. 🎉
 
 ## Understanding RwJS File Structure
 
