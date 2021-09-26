@@ -1,6 +1,6 @@
 <Header Image Here>
 
-## Introduction
+## Quick Summary
 RedwoodJS prides itself as the full-stack framework for the Jamstack.
 
 If you have no idea what Jamstack is please read more about it [here](https://www.freecodecamp.org/news/what-is-the-jamstack-and-how-do-i-host-my-website-on-it/).
