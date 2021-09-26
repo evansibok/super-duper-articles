@@ -11,8 +11,8 @@ At the end of this tutorial you will learn how to bootstrap a RedwoodJS (RwJS) a
 ## Outline
 - [Prequisites](#prerequisites)
 - [What is RedwoodJS?](#what-is-redwoodjs)
-  - Understanding what RwJS is and why you should adopt it
-  - The features and capabilities of RwJS
+  - [Understanding what RwJS is and why you should adopt it](#understanding-what-rwjs-is-and-why-you-should-adopt-it)
+  - [The features and capabilities of RwJS](#the-features-and-capabilities-of-rwjs)
 - [Bootstrapping our RwJS application](#bootstrapping-our-rwjs-application)
   - Installing RwJS
   - Starting our RwJS application
