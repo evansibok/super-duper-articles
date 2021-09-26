@@ -14,7 +14,7 @@ At the end of this tutorial you will learn how to bootstrap a RedwoodJS (RwJS) a
   - [Understanding what RwJS is and why you should adopt it](#understanding-what-rwjs-is-and-why-you-should-adopt-it)
   - [The features and capabilities of RwJS](#the-features-and-capabilities-of-rwjs)
 - [Bootstrapping our RwJS application](#bootstrapping-our-rwjs-application)
-  - Installing RwJS
+  - [Installing RedwoodJS](#installing-redwoodjs)
   - Starting our RwJS application
 - [Understanding RwJS File Structure](#understanding-rwjs-file-structure)
   - The Backend Directory
@@ -37,12 +37,12 @@ To follow this tutorial you should be familiar with the following:
 > The Jamstack Philosophy - If you have no idea what Jamstack is please read more about it [here](https://www.freecodecamp.org/news/what-is-the-jamstack-and-how-do-i-host-my-website-on-it/).
 
 ## What is RedwoodJS?
-According to its [documentation](https://redwoodjs.com/docs/introduction), Redwood is an opinionated, full-stack, serverless web application framework that will allow you to build and deploy JAMstack applications with ease.
+> According to its [documentation](https://redwoodjs.com/docs/introduction), Redwood is an opinionated, full-stack, serverless web application framework that will allow you to build and deploy JAMstack applications with ease.
 
 ### Understanding what RwJS is and why you should adopt it
 Redwood is integrated with technologies like React, GraphQL, custom Auth and a couple of other tools out of the box.
 
-Redwood aims to empower you to focus on building what matters without focusing your energy on choosing technologies or tooling that delay development.
+Redwood aims to empower you to focus on building what matters without focusing your energy on choosing technologies or tooling that eat up development time.
 
 ### The features and capabilities of RwJS
 Here are some of the features of Redwood:
@@ -58,6 +58,17 @@ Here are some of the features of Redwood:
 For more information on Redwood features please refer to the [documentation](https://redwoodjs.com/docs/introduction).
 
 ## Bootstrapping our RwJS application
+### Installing RedwoodJS
+Redwood uses Yarn to initialize an application and requires the following version of `node` and `yarn` to work properly:
+
+```
+node =14.x
+yarn >=1.15
+```
+
+Run the command below in your terminal to create a new Redwood app
+``
+
 
 ## Understanding RwJS File Structure
 
