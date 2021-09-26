@@ -15,7 +15,7 @@ At the end of this tutorial you will learn how to bootstrap a RedwoodJS (RwJS) a
   - [The features and capabilities of RwJS](#the-features-and-capabilities-of-rwjs)
 - [Bootstrapping our RwJS application](#bootstrapping-our-rwjs-application)
   - [Installing RedwoodJS](#installing-redwoodjs)
-  - Starting our RwJS application
+  - [Starting our RwJS application](#starting-our-rwjs-application)
 - [Understanding RwJS File Structure](#understanding-rwjs-file-structure)
   - The Backend Directory
   - The Frontend Directory
@@ -73,6 +73,7 @@ yarn create redwood-app ./thankful
 ```
 This will start the process of creating a fresh application from scratch and installing `create-redwood-app` package globally on your machine using Yarn. Once the process is completed, you'll find a `thankful` directory which is where all of our application will live moving forward.
 
+### Starting our RwJS application
 - Move into the application directory
 ```
 cd thankful
@@ -83,7 +84,7 @@ yarn redwood dev
 ```
 A browser will automatically open up to the url `http://localhost:8910` showing the screen below:
 
-![truth folder structure](images/bootstrapped-home.png)
+![thankful home](images/bootstrapped-home.png)
 
 Well done, our application is up and running and ready for development. 🎉
 
