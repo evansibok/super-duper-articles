@@ -1,6 +1,6 @@
 ## Quick Summary
 
-In our __[previous post]()__, we learnt how to bootstrap a redwood app from scratch, continuing from there, in this tutorial we are going to learn how to add a Postgres database using Heroku and Generate models for our journaling application using Prisma and Redwood generators.
+In our __[previous post](../003-Bootstrapping%20a%20RedwoodJS%20Application/bootstrapping-a-redwoodjs-application.md)__, we learnt how to bootstrap a redwood app from scratch, continuing from there, in this tutorial we are going to learn how to add a Postgres database using Heroku and Generate models for our journaling application using Prisma and Redwood generators.
 
 ## Goal
 
@@ -26,7 +26,7 @@ At the end of this tutorial, you will learn how to provision a Heroku Postgres D
   - [GitHub Repo](#github-repo)
 
 ## Prerequisites
-This tutorial only assumes that you have a basic understanding of [Prisma ORM](https://www.prisma.io/), every other thing will be taught from scratch.
+This tutorial assumes that you have a basic understanding of [Prisma ORM](https://www.prisma.io/), every other thing will be taught from scratch.
 
 ## Creating our Postgres Database on Heroku
 ### Creating a nodeJS app on Heroku
