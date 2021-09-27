@@ -1,10 +1,14 @@
+<img src="images/blog-post-header.png" width="900" alt="Redwood Header">
+
+**Cover Image Credits**: Photo by *[Edu Lauton](https://unsplash.com/@edulauton)*
+
 ## Quick Summary
 RedwoodJS prides itself as the full-stack framework for the Jamstack.
 
 In this tutorial, we are going to learn about RedwoodJS and how to initialize a new RedwoodJS application.
 
 ## Goal
-At the end of this tutorial you will learn how to bootstrap a RedwoodJS (RwJS) application, understand RwJS project file structure and the RwJS philosophy for full-stack approach to jamstack application development.
+At the end of this tutorial, you will learn how to bootstrap a RedwoodJS (RwJS) application, understand the RwJS project file structure, and the RwJS philosophy for a full-stack approach to JAMstack application development.
 
 ## Outline
 - [Prequisites](#prerequisites)
@@ -42,11 +46,11 @@ Redwood aims to empower you to focus on building what matters without focusing y
 
 ### The features and capabilities of RwJS
 Here are some of the features of Redwood:
-- Redwood is open source ❤️
+- Redwood is open-source ❤️
 - Standard file structure to support seamless backend and frontend development
 - Automatic page-based code-splitting (similar to Gatsby, NextJS)
-- GraphQL Api construction without the need for a boilerplate
-- Dynamic data-fetching from the Api on the frontend
+- GraphQL API construction without the need for a boilerplate
+- Dynamic data-fetching from the API on the frontend
 - Generators for your frontend application (saves a lot of time)
 - Easy deployments to [Netlify](https://www.netlify.com/), [Vercel](https://vercel.com/), [Render](https://render.com/) and [Serverless](https://www.serverless.com/) 😍
 - Continuous feature upgrades over-time 🔥
@@ -67,7 +71,7 @@ yarn >=1.15
 ```
 yarn create redwood-app ./thankful
 ```
-This will start the process of creating a fresh application from scratch and installing `create-redwood-app` package globally on your machine using Yarn. Once the process is completed, you'll find a `thankful` directory which is where all of our application will live moving forward.
+This will start the process of creating a fresh application from scratch and installing the `create-redwood-app` package globally on your machine using Yarn. Once the process is complete, you'll find a `thankful` directory which is where all of our application's files will live moving forward.
 
 ### Starting our RwJS application
 - Move into the application directory
@@ -78,14 +82,14 @@ cd thankful
 ```
 yarn redwood dev
 ```
-A browser window will automatically open up to the url `http://localhost:8910` showing the screen below:
+A browser window will automatically open up to the URL `http://localhost:8910` showing the screen below:
 
 ![thankful home](images/bootstrapped-home.png)
 
 Well done, our application is up and running and ready for development. 🎉
 
 ## Understanding RwJS File Structure
-Let's take a look at the file structure of our app. We will ignore the configuration files for now and focus on the core app directories `api` and `web`.
+Let's take a look at the file structure of our app. We will ignore the configuration files for now and focus on the core app directories `API` and `web`.
 
 In Yarn, these are called `workspaces` but Redwood calls them `sides`. When installing packages moving forward we will make use of these.
 
@@ -93,13 +97,13 @@ We will learn how to work with these soon.
 
 ![RedwoodJS File Structure](images/rwjs-file-structure.png)
 
-The `api` directory contains all files and logic for our server, database configurations, business logic, graphql setup and serverless functions. In summary, this is our backend server directory.
+The `API` directory contains all files and logic for our server, database configurations, business logic, graphQL setup, and serverless functions. In summary, this is our backend server directory.
 
-The `web` directory is where the code for our frontend app lives. Redwood by default configures our routes, layouts and pages for our application.
+The `web` directory is where the code for our frontend app lives. Redwood by default configures our routes, layouts, and pages for our application.
 
 ## Conclusion
 ### Summary
-In this tutorial we have learnt what RedwoodJs is, the problem Redwood aims to solve, how to start a Redwood project from scratch and how to understand the file structure of a Redwood project.
+In this tutorial we have learned what RedwoodJs is, the problem Redwood aims to solve, how to start a Redwood project from scratch and how to understand the file structure of a Redwood project.
 
 I will suggest you go ahead and create a repository on GitHub and push your application to it, as we will want to keep track of our progress moving forward. If you aren't familiar with how to do this, you can find more information in the [Resources](#resources) section.
 
