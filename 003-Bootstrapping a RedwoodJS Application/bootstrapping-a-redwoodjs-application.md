@@ -24,7 +24,7 @@ At the end of this tutorial you will learn how to bootstrap a RedwoodJS (RwJS) a
 
 ## Prerequisites
 To follow this tutorial you should be familiar with the following:
-> Yarn Package Manager
+> Yarn Package Manager - should be installed on your machine
 
 > React
 
@@ -101,5 +101,19 @@ The `web` directory is where the code for our frontend app lives. Redwood by def
 
 ## Conclusion
 ### Summary
+In this tutorial we have learnt what RedwoodJs is, the problem Redwood aims to solve, how to start a Redwood project from scratch and how to understand the file structure of a Redwood project.
+
+I will suggest you go ahead and create a repository on GitHub and push your application to it, as we will want to keep track of our progress moving forward. If you aren't familiar with how to do this, you can find more information in the [Resources](#resources) section.
+
+Next, we will learn [How to Add a Postgres Database and Generate Models using Prisma Schema Client in a Redwood App](#)
 ### Resources
+- [Yarn Package Manager](https://yarnpkg.com/)
+- [ReactJS](https://reactjs.org/)
+- [GraphQL](https://graphql.org/)
+- [JAMstack](https://jamstack.org/)
+- [Redwood Official Website](https://redwoodjs.com/)
+- [Redwood Documentation](https://redwoodjs.com/docs/introduction)
+- [How to Push an Existing Project to GitHub](https://www.digitalocean.com/community/tutorials/how-to-push-an-existing-project-to-github)
+
 ### GitHub Repo
+[Thankful App](https://github.com/evansibok/thankful)
