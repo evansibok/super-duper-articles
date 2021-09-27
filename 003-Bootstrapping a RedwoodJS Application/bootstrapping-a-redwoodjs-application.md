@@ -17,12 +17,10 @@ At the end of this tutorial you will learn how to bootstrap a RedwoodJS (RwJS) a
   - [Installing RedwoodJS](#installing-redwoodjs)
   - [Starting our RwJS application](#starting-our-rwjs-application)
 - [Understanding RwJS File Structure](#understanding-rwjs-file-structure)
-  - The Backend Directory
-  - The Frontend Directory
 - [Conclusion](#conclusion)
-  - Summary
-  - Resources
-  - GitHub Repo
+  - [Summary](#summary)
+  - [Resources](#resources)
+  - [GitHub Repo](#github-repo)
 
 ## Prerequisites
 To follow this tutorial you should be familiar with the following:
@@ -82,12 +80,26 @@ cd thankful
 ```
 yarn redwood dev
 ```
-A browser will automatically open up to the url `http://localhost:8910` showing the screen below:
+A browser window will automatically open up to the url `http://localhost:8910` showing the screen below:
 
 ![thankful home](images/bootstrapped-home.png)
 
 Well done, our application is up and running and ready for development. 🎉
 
 ## Understanding RwJS File Structure
+Let's take a look at the file structure of our app. We will ignore the configuration files for now and focus on the core app directories `api` and `web`.
+
+In Yarn, these are called `workspaces` but Redwood calls them `sides`. When installing packages moving forward we will make use of these.
+
+We will learn how to work with these soon.
+
+![RedwoodJS File Structure](images/rwjs-file-structure.png)
+
+The `api` directory contains all files and logic for our server, database configurations, business logic, graphql setup and serverless functions. In summary, this is our backend server directory.
+
+The `web` directory is where the code for our frontend app lives. Redwood by default configures our routes, layouts and pages for our application.
 
 ## Conclusion
+### Summary
+### Resources
+### GitHub Repo
