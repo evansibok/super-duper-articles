@@ -119,4 +119,4 @@ I will suggest you go ahead and create a repository on GitHub and push your appl
 ### GitHub Repo
 [Thankful App](https://github.com/evansibok/thankful)
 
-<!-- Next, we will learn [How to Add a Postgres Database and Generate Models in a Redwood App](#) -->
+Next, we will learn [How to Add a Postgres Database and Generate Models in a Redwood App](../004-How%20to%20Add%20a%20Postgres%20Database%20and%20Generate%20Models%20in%20a%20Redwood%20App/how-to-add-a-postgres-database-and-generate-models-in-a-redwood-app.md)
