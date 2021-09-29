@@ -7,18 +7,15 @@ In our **[previous post](../003-Bootstrapping%20a%20RedwoodJS%20Application/boot
 At the end of this tutorial, you will learn how to provision a Heroku Postgres Database, connect the database to our Redwood app, generate GraphQL schemas and the logic needed to perform CRUD operations for all our models.
 
 ## Outline
-
 - [Prequisites](#prerequisites)
-- [Creating our Postgres Database on Heroku](#creating-out-postgres-database-on-heroku)
-  - [Creating a NodeJS app on Heroku](#creating-a-nodejs-app-on-heroku)
-  - [Add a Postgres Database to our Heroku App](#adding-a-postgres-database-to-our-heroku-app)
-- [Adding Postgres Database to our Redwood App](#adding-postgres-database-to-our-redwood-app)
+- [Creating our Postgres Database on Heroku](#creating-our-postgres-database-on-heroku)
+  - [Creating a new application on Heroku](#creating-a-new-application-on-heroku)
+  - [Adding a Postgres Database to our Heroku App](#adding-a-postgres-database-to-our-heroku-app)
+- [Connecting Postgres Database to our Redwood App](#connecting-postgres-database-to-our-redwood-app)
   - [Getting our DATABASE URL from our Heroku App](#getting-our-database-url-from-our-heroku-app)
   - [Adding our DATABASE URL to environment variable in our Redwood App](#adding-our-database-url-to-environment-variable-in-our-redwood-app)
 
 
-<!-- - [Creating our Postgres Database on ElephantSQL](#creating-our-postgres-database-on-elephantsql)
-- [Adding our DATABASE URL to environment variable in our Redwood App](#adding-our-database-url-to-environment-variable-in-our-redwood-app) -->
 - [Generating GraphQL Schemas](#generating-graphql-schemas)
   - [Replacing Redwood default DB engine with postgres](#replacing-redwood-default-db-engine-with-postgres)
   - [Adding User, Mention and Note models](#adding-user-mention-and-note-models)
@@ -32,7 +29,7 @@ At the end of this tutorial, you will learn how to provision a Heroku Postgres D
 ## Prerequisites
 
 This tutorial assumes that you have a basic understanding of [Prisma ORM](https://www.prisma.io/).
-## Creating our Postgres Database on ElephantSQL
+## Creating our Postgres Database on Heroku
 Heroku is a Platform-as-a-service tool for building and managing your application infrastructure in the cloud. You can host your apps on Heroku and get a live url to access them.
 
 Heroku also has other tools like `Heroku Postgres` which is a cloud-managed postgres database service. This is where we'll create our database for this app.
@@ -41,46 +38,51 @@ If you don't already have an account on Heroku, head on to [Heroku Website](http
 
 ![Heroku Dashboard](images/heroku-dashboard.png)
 
-<!-- ElephantSQL is a PostgreSQL-as-a-service platform. You can set up a cloud postgres database in about 3 minutes. It's pretty straight forward.
+In heroku, your created applications will appear within the section with the red box. Next we will create an application on Heroku to host our database.
 
-Head over to [ElephantSQL Website](https://www.elephantsql.com/) to create an account and login to start creating our database.
+### Creating a new application on Heroku
+Follow the steps below to create a new application on `heroku`.
 
-Once logged in, your dashboard should look something like this:
+- Step 1: From your Heroku dashboard, click on __`NEW`__ button and select __`Create new app`__ from the options
+![new app](images/new-app.png)
 
-![ElephantSQL Dashboard](images/elephantsql-dashboard.png)
+- Step 2: Enter a name for your app, pick your region and click on __`Create app`__
+![create new app](images/create-new-app.png)
 
-Follow the steps below to create a Postgres Database.
+- Step 3: You will be redirected to the __`Deploy`__ tab for your newly created application.
+![create app success](images/create-app-success.png)
 
-- Click on the **`Create New Instance`** button
-  ![create new instance](images/create-new-instance.png)
+### Adding a Postgres Database to our Heroku App
+- Step 4: Click on the __`Resources`__ tab
+![got to resources](images/go-to-resources.png)
 
-- Enter a name for your database and click the **`Select Region`** button
-  ![name database](images/name-database.png)
+- Step 5: Find the __`Add-ons`__ field, search for and select __`Heroku Postgres`__
+![select postgres](images/select-postgres.png)
 
-- Select your region (I typically leave it at the default AWS selection) and click the **`Review`** button
-  ![select region](images/select-region.png)
+- Step 6: Click __`Submit Order Form`__ on the modal that appears and a database will be created for you. 🎉
+![submit order](images/submit-order.png)
+![new db](images/new-db.png)
 
-- Review your selection to ensure you have the right configuration, then click the **`Create Instance`** button to continue
-  ![review selection](images/review-selection.png)
+## Connecting Postgres Database to our Redwood App
+To use our database in our Redwood app we have to locate and get the URL to our newly created `Heroku Postgres` database.
 
-- Your database will be created and you'll be redirected back to your dashboard 🎉
-  ![dashboard with db](images/dashboard-with-db.png)
+### Getting our DATABASE URL from our Heroku App
+- Step 7: From our application dashboard (__`Overview`__) tab, click on our newly created database and you'll be taken to the datastore screen for this database.
+![click db one](images/click-db-one.png)
 
-- To get our DATABASE URL, click on the database name in the dashboard and you'll be taken to the database console. _Notice the URL shown in our console as we'll copy and paste it in our Redwood app in the next step._
-  ![db console](images/db-console.png) -->
+- Step 8: On the datastore screen, click the __`Settings`__ tab
+![click settings](images/click-settings.png)
 
-<!-- ### Creating a nodeJS app on Heroku -->
-<!-- ### Adding a Postgres Database to our Heroku App -->
+- Step 9: Click the __`View Credentials`__ button to expose our database configurations
+![datastore db one](images/datastore-db-one.png)
 
-<!-- ## Adding Postgres Database to our Redwood App -->
-<!-- ### Getting our DATABASE URL from our Heroku App -->
+- Step 10: Locate the __`URI`__ Label and copy the URL in front of it as our __`DATABASE_URL`__
+![db credentials](images/db-credentials.png)
 
-## Adding our DATABASE URL to environment variable in our Redwood App
-
-In the root of our `thankful` project, you'll find a `.env` file. Copy the `URL` From our database console in `ElephantSQL` and paste it as the value for the `DATABASE_URL` key inside our `.env` file.
+### Adding our DATABASE URL to environment variable in our Redwood App
+In the root of our `thankful` project, you'll find a `.env` file. Copy the URL From `Step 10` above and paste it as the value for the `DATABASE_URL` variable inside our `.env` file.
 
 ## Generating GraphQL Schemas
-
 Now, we are going to create and generate our database tables which we will persist to the postgres database we just created.
 
 Personally, before I start writing my database tables, I use a tool called [DB Diagram](https://dbdiagram.io/) to design and understand my database relationships visually.
@@ -190,9 +192,6 @@ Once you have successfully created the shadow database, follow the steps below:
 - Go to your `.env` file and add the variable `SHADOW_DATABASE_URL` to it
 - Copy the URL of your shadow database from your ElephantSQL Console and paste it as the value of the `SHADOW_DATABASE_URL` variable
 
-
-<!-- https://pris.ly/d/migrate-shadow -->
-
 ### Viewing our database in Heroku Dashboard
 
 ## Conclusion
@@ -208,3 +207,37 @@ Once you have successfully created the shadow database, follow the steps below:
 [Thankful App](https://github.com/evansibok/thankful)
 
 Next, we will learn [What is the next topic?](#)
+
+<!-- CREATING A CLOUD HEROKU DATABASE ON ELEPHANTSQL -->
+
+<!-- - [Creating our Postgres Database on ElephantSQL](#creating-our-postgres-database-on-elephantsql)
+- [Adding our DATABASE URL to environment variable in our Redwood App](#adding-our-database-url-to-environment-variable-in-our-redwood-app) -->
+
+
+<!-- ElephantSQL is a PostgreSQL-as-a-service platform. You can set up a cloud postgres database in about 3 minutes. It's pretty straight forward.
+
+Head over to [ElephantSQL Website](https://www.elephantsql.com/) to create an account and login to start creating our database.
+
+Once logged in, your dashboard should look something like this:
+
+![ElephantSQL Dashboard](images/elephantsql-dashboard.png)
+
+Follow the steps below to create a Postgres Database.
+
+- Click on the **`Create New Instance`** button
+  ![create new instance](images/create-new-instance.png)
+
+- Enter a name for your database and click the **`Select Region`** button
+  ![name database](images/name-database.png)
+
+- Select your region (I typically leave it at the default AWS selection) and click the **`Review`** button
+  ![select region](images/select-region.png)
+
+- Review your selection to ensure you have the right configuration, then click the **`Create Instance`** button to continue
+  ![review selection](images/review-selection.png)
+
+- Your database will be created and you'll be redirected back to your dashboard 🎉
+  ![dashboard with db](images/dashboard-with-db.png)
+
+- To get our DATABASE URL, click on the database name in the dashboard and you'll be taken to the database console. _Notice the URL shown in our console as we'll copy and paste it in our Redwood app in the next step._
+  ![db console](images/db-console.png) -->
