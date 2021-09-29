@@ -1,34 +1,31 @@
 ## Quick Summary
 
-In our __[previous post](../003-Bootstrapping%20a%20RedwoodJS%20Application/bootstrapping-a-redwoodjs-application.md)__, we learnt how to bootstrap a redwood app from scratch, continuing from there, in this tutorial we are going to learn how to add a Postgres database using Heroku and Generate models for our journaling application using Prisma and Redwood generators.
+In our **[previous post](../003-Bootstrapping%20a%20RedwoodJS%20Application/bootstrapping-a-redwoodjs-application.md)**, we learnt how to bootstrap a redwood app from scratch, continuing from there, in this tutorial we are going to learn how to add a Postgres database using Heroku and Generate models for our journaling application using Prisma and Redwood generators.
 
 ## Goal
 
 At the end of this tutorial, you will learn how to provision a Heroku Postgres Database, connect the database to our Redwood app, generate GraphQL schemas and the logic needed to perform CRUD operations for all our models.
 
 ## Outline
+
 - [Prequisites](#prerequisites)
 - [Creating our Postgres Database on ElephantSQL](#creating-our-postgres-database-on-elephantsql)
-<!-- - [Creating a nodeJS app on Heroku](#creating-a-nodejs-app-on-heroku) -->
-<!-- - [Adding a Postgres Heroku Database to our Heroku App](#adding-a-postgres-heroku-database-to-our-heroku-app) -->
-<!-- - [Adding Postgres Database to our Redwood App](#adding-postgres-database-to-our-redwood-app) -->
-<!-- - [Getting our DATABASE URL from our Heroku App](#getting-our-database-url-from-our-heroku-app) -->
 - [Adding our DATABASE URL to environment variable in our Redwood App](#adding-our-database-url-to-environment-variable-in-our-redwood-app)
 - [Generating GraphQL Schemas](#generating-graphql-schemas)
   - [Replacing Redwood default DB engine with postgres](#replacing-redwood-default-db-engine-with-postgres)
   - [Adding User, Mention and Note models](#adding-user-mention-and-note-models)
   - [Generating Database Migrations and Models for our Redwood App](#generating-database-migrations-and-models-for-our-redwood-app)
 - [Viewing our database in Heroku Dashboard](#viewing-our-database-in-heroku-dashboard)
-  - 
 - [Conclusion](#conclusion)
   - [Summary](#summary)
   - [Resources](#resources)
   - [GitHub Repo](#github-repo)
 
 ## Prerequisites
-This tutorial assumes that you have a basic understanding of [Prisma ORM](https://www.prisma.io/), every other thing will be taught.
 
+This tutorial assumes that you have a basic understanding of [Prisma ORM](https://www.prisma.io/).
 ## Creating our Postgres Database on ElephantSQL
+
 <!-- Heroku is a Platform-as-a-service tool for building and managing your application infrastructure in the cloud. You can host your apps on Heroku and get a live url to access them.
 
 Heroku also has other tools like `Heroku Postgres` which is a cloud-managed postgres database service. This is where we'll create our database for this app.
@@ -47,39 +44,42 @@ Once logged in, your dashboard should look something like this:
 
 Follow the steps below to create a Postgres Database.
 
-- Click on the __`Create New Instance`__ button
-![create new instance](images/create-new-instance.png)
+- Click on the **`Create New Instance`** button
+  ![create new instance](images/create-new-instance.png)
 
-- Enter a name for your database and click the __`Select Region`__ button
-![name database](images/name-database.png)
+- Enter a name for your database and click the **`Select Region`** button
+  ![name database](images/name-database.png)
 
-- Select your region (I typically leave it at the default AWS selection) and click the __`Review`__ button
-![select region](images/select-region.png)
+- Select your region (I typically leave it at the default AWS selection) and click the **`Review`** button
+  ![select region](images/select-region.png)
 
-- Review your selection to ensure you have the right configuration, then click the __`Create Instance`__ button to continue
-![review selection](images/review-selection.png)
+- Review your selection to ensure you have the right configuration, then click the **`Create Instance`** button to continue
+  ![review selection](images/review-selection.png)
 
 - Your database will be created and you'll be redirected back to your dashboard 🎉
-![dashboard with db](images/dashboard-with-db.png)
+  ![dashboard with db](images/dashboard-with-db.png)
 
 - To get our DATABASE URL, click on the database name in the dashboard and you'll be taken to the database console. _Notice the URL shown in our console as we'll copy and paste it in our Redwood app in the next step._
-![db console](images/db-console.png)
-
+  ![db console](images/db-console.png)
 
 <!-- ### Creating a nodeJS app on Heroku -->
 <!-- ### Adding a Postgres Database to our Heroku App -->
 
 <!-- ## Adding Postgres Database to our Redwood App -->
 <!-- ### Getting our DATABASE URL from our Heroku App -->
+
 ## Adding our DATABASE URL to environment variable in our Redwood App
+
 In the root of our `thankful` project, you'll find a `.env` file. Copy the `URL` From our database console in `ElephantSQL` and paste it as the value for the `DATABASE_URL` key inside our `.env` file.
 
 ## Generating GraphQL Schemas
+
 Now, we are going to create and generate our database tables which we will persist to the postgres database we just created.
 
 Personally, before I start writing my database tables, I use a tool called [DB Diagram](https://dbdiagram.io/) to design and understand my database relationships visually.
 
 As we are building a journaling application, we reckon we will need the following features:
+
 - user account creation
 - notes creation where users can be mentioned inside of notes, plus the ability to update, query and delete notes.
 
@@ -87,15 +87,17 @@ So with this in mind, we came up with the following database model using db diag
 ![thankful models](images/thankful-model.png)
 
 A straight forward explanation for the above model goes like this:
+
 - users table (user creates account)
 - notes table (user creates a note and becomes the author of that note)
 - mentions table (user can mention another user when creating a note)
 
-Since a user can be mentioned in multiples by different authors, and we can have multiple mentioned users in a single note, then it makes sense to have a mentions table to connect mentioned users to the notes they are mentioned in.
+Since a user can be mentioned in multiple notes by different authors, and we can have multiple mentioned users in a single note, then it makes sense to have a mentions table to connect mentioned users to the notes they are mentioned in.
 
 For more on table relationships, refer to the resources section in this post.
 
 ### Replacing Redwood default DB engine with postgres
+
 To locate our schema file, from inside the `api` directory in our root project, open up the `db` directory and you'll find a `schema.prisma` file. The contents of our default `schema.prisma` file looks like this:
 ![prisma schema file](images/prisma-schema-file.png)
 
@@ -104,7 +106,8 @@ To locate our schema file, from inside the `api` directory in our root project, 
 If you look closely, you'll see the `datasource db` already pulls the database url from our environment file with the key `DATABASE_URL`. Since we already updated this to our `ElephantSQL` URL, we are good to go.
 
 ### Adding User, Mention and Note models
-In our `schema.prisma` file above we have a default `UserExample` model, replace the model code in our file with the code below:
+
+In our `schema.prisma` file above we have a default `UserExample` model, replace the default model code in our file with the code below:
 
 ```
 model User {
@@ -149,16 +152,22 @@ model Mention {
 }
 ```
 
-The code above creates a User, Note and Mention model for our db schema. To understand how we created the schema above please refer to the [Prisma Schema Docs](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference).
+The code above creates User, Note and Mention models for our db schema. To understand how we created the schema above please refer to the [Prisma Schema Docs](https://www.prisma.io/docs/concepts/components/prisma-schema).
+
 ### Generating Database Migrations and Models for our Redwood App
 
-## Viewing our database in Heroku Dashboard
+### Viewing our database in Heroku Dashboard
+
 ## Conclusion
 
 ### Summary
+
 ### Resources
+
 - [SQL Table Relationships Explained](https://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561)
+
 ### GitHub Repo
+
 [Thankful App](https://github.com/evansibok/thankful)
 
 Next, we will learn [What is the next topic?](#)
