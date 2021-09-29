@@ -104,6 +104,52 @@ To locate our schema file, from inside the `api` directory in our root project, 
 If you look closely, you'll see the `datasource db` already pulls the database url from our environment file with the key `DATABASE_URL`. Since we already updated this to our `ElephantSQL` URL, we are good to go.
 
 ### Adding User, Mention and Note models
+In our `schema.prisma` file above we have a default `UserExample` model, replace the model code in our file with the code below:
+
+```
+model User {
+  id        Int       @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String    @unique
+  username  String    @unique
+  image     String
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  notes     Note[]
+  mentions  Mention[]
+
+  @@map("users")
+}
+
+model Note {
+  id        Int       @id @default(autoincrement())
+  content   String
+  author    User?     @relation(fields: [authorId], references: [id])
+  authorId  Int?
+  mentions  Mention[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@unique([authorId])
+  @@map("notes")
+}
+
+model Mention {
+  id                Int      @id @default(autoincrement())
+  mentionedUser     User?    @relation(fields: [mentionedUsername], references: [username])
+  mentionedUsername String?
+  note              Note?    @relation(fields: [noteId], references: [id])
+  noteId            Int?
+  createdAt         DateTime @default(now())
+
+  @@unique([mentionedUsername, noteId])
+  @@map("mentions")
+}
+```
+
+The code above creates a User, Note and Mention model for our db schema. To understand how we created the schema above please refer to the [Prisma Schema Docs](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference).
 ### Generating Database Migrations and Models for our Redwood App
 
 ## Viewing our database in Heroku Dashboard
