@@ -9,11 +9,11 @@ At the end of this tutorial, you will learn how to provision a Heroku Postgres D
 ## Outline
 - [Prequisites](#prerequisites)
 - [Creating our Postgres Database on ElephantSQL](#creating-our-postgres-database-on-elephantsql)
-  <!-- - [Creating a nodeJS app on Heroku](#creating-a-nodejs-app-on-heroku) -->
-  - [Adding a Postgres Heroku Database to our Heroku App](#adding-a-postgres-heroku-database-to-our-heroku-app)
-- [Adding Postgres Database to our Redwood App](#adding-postgres-database-to-our-redwood-app)
-  - [Getting our DATABASE URL from our Heroku App](#getting-our-database-url-from-our-heroku-app)
-  - [Adding our DATABASE URL to our environment variable file in Redwood](#adding-our-database-url-to-our-environment-variable-file-in-redwood)
+<!-- - [Creating a nodeJS app on Heroku](#creating-a-nodejs-app-on-heroku) -->
+<!-- - [Adding a Postgres Heroku Database to our Heroku App](#adding-a-postgres-heroku-database-to-our-heroku-app) -->
+<!-- - [Adding Postgres Database to our Redwood App](#adding-postgres-database-to-our-redwood-app) -->
+<!-- - [Getting our DATABASE URL from our Heroku App](#getting-our-database-url-from-our-heroku-app) -->
+- [Adding our DATABASE URL to environment variable in our Redwood App](#adding-our-database-url-to-environment-variable-in-our-redwood-app)
 - [Generating GraphQL Schemas](#generating-graphql-schemas)
   - [Replacing Redwood default DB engine with postgres](#replacing-redwood-default-db-engine-with-postgres)
   - [Adding User, Mention and Note models](#adding-user-mention-and-note-models)
@@ -69,12 +69,31 @@ Follow the steps below to create a Postgres Database.
 <!-- ### Creating a nodeJS app on Heroku -->
 <!-- ### Adding a Postgres Database to our Heroku App -->
 
-## Adding Postgres Database to our Redwood App
+<!-- ## Adding Postgres Database to our Redwood App -->
 <!-- ### Getting our DATABASE URL from our Heroku App -->
-### Adding our DATABASE URL to our environment variable file in Redwood
+## Adding our DATABASE URL to environment variable in our Redwood App
+In the root of our `thankful` project, you'll find a `.env` file. Copy the `URL` From our database console in `ElephantSQL` and paste it as the value for the `DATABASE_URL` key inside our `.env` file.
 
 ## Generating GraphQL Schemas
+Now, we are going to create and generate our database tables which we will persist to the postgres database we just created.
+
+Personally, before I start writing my database tables, I use a tool called [DB Diagram](https://dbdiagram.io/) to design and understand my database relationships visually.
+
+As we are building a journaling application, we reckon we will need the following features:
+- user account creation
+- notes creation where users can be mentioned inside of notes.
+
+So with this in mind, we came up with the following database model using db diagram:
+![thankful models](images/thankful-model.png)
+
 ### Replacing Redwood default DB engine with postgres
+To locate our schema file, from inside the `api` directory in our root project, open up the `db` directory and you'll find a `schema.prisma` file. The contents of our default `schema.prisma` file looks like this:
+![prisma schema file](images/prisma-schema-file.png)
+
+- Change the `datasource provider` from `sqlite` to `postgresql`
+
+If you look closely, you'll see the `datasource db` already pulls the database url from our environment file with the key `DATABASE_URL`. Since we already updated this our `elephantsql` url, we are good to go. 
+
 ### Adding User, Mention and Note models
 ### Generating Database Migrations and Models for our Redwood App
 
