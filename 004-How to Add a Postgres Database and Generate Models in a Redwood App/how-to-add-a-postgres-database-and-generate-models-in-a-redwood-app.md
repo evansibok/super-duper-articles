@@ -9,8 +9,16 @@ At the end of this tutorial, you will learn how to provision a Heroku Postgres D
 ## Outline
 
 - [Prequisites](#prerequisites)
-- [Creating our Postgres Database on ElephantSQL](#creating-our-postgres-database-on-elephantsql)
-- [Adding our DATABASE URL to environment variable in our Redwood App](#adding-our-database-url-to-environment-variable-in-our-redwood-app)
+- [Creating our Postgres Database on Heroku](#creating-out-postgres-database-on-heroku)
+  - [Creating a NodeJS app on Heroku](#creating-a-nodejs-app-on-heroku)
+  - [Add a Postgres Database to our Heroku App](#adding-a-postgres-database-to-our-heroku-app)
+- [Adding Postgres Database to our Redwood App](#adding-postgres-database-to-our-redwood-app)
+  - [Getting our DATABASE URL from our Heroku App](#getting-our-database-url-from-our-heroku-app)
+  - [Adding our DATABASE URL to environment variable in our Redwood App](#adding-our-database-url-to-environment-variable-in-our-redwood-app)
+
+
+<!-- - [Creating our Postgres Database on ElephantSQL](#creating-our-postgres-database-on-elephantsql)
+- [Adding our DATABASE URL to environment variable in our Redwood App](#adding-our-database-url-to-environment-variable-in-our-redwood-app) -->
 - [Generating GraphQL Schemas](#generating-graphql-schemas)
   - [Replacing Redwood default DB engine with postgres](#replacing-redwood-default-db-engine-with-postgres)
   - [Adding User, Mention and Note models](#adding-user-mention-and-note-models)
@@ -25,16 +33,15 @@ At the end of this tutorial, you will learn how to provision a Heroku Postgres D
 
 This tutorial assumes that you have a basic understanding of [Prisma ORM](https://www.prisma.io/).
 ## Creating our Postgres Database on ElephantSQL
-
-<!-- Heroku is a Platform-as-a-service tool for building and managing your application infrastructure in the cloud. You can host your apps on Heroku and get a live url to access them.
+Heroku is a Platform-as-a-service tool for building and managing your application infrastructure in the cloud. You can host your apps on Heroku and get a live url to access them.
 
 Heroku also has other tools like `Heroku Postgres` which is a cloud-managed postgres database service. This is where we'll create our database for this app.
 
 If you don't already have an account on Heroku, head on to [Heroku Website](https://www.heroku.com/) and create one. Then log in to your account and you'll be taken to your dashboard, which looks something like this:
 
-![Heroku Dashboard](images/heroku-dashboard.png) -->
+![Heroku Dashboard](images/heroku-dashboard.png)
 
-ElephantSQL is a PostgreSQL-as-a-service platform. You can set up a cloud postgres database in about 3 minutes. It's pretty straight forward.
+<!-- ElephantSQL is a PostgreSQL-as-a-service platform. You can set up a cloud postgres database in about 3 minutes. It's pretty straight forward.
 
 Head over to [ElephantSQL Website](https://www.elephantsql.com/) to create an account and login to start creating our database.
 
@@ -60,7 +67,7 @@ Follow the steps below to create a Postgres Database.
   ![dashboard with db](images/dashboard-with-db.png)
 
 - To get our DATABASE URL, click on the database name in the dashboard and you'll be taken to the database console. _Notice the URL shown in our console as we'll copy and paste it in our Redwood app in the next step._
-  ![db console](images/db-console.png)
+  ![db console](images/db-console.png) -->
 
 <!-- ### Creating a nodeJS app on Heroku -->
 <!-- ### Adding a Postgres Database to our Heroku App -->
@@ -103,13 +110,15 @@ To locate our schema file, from inside the `api` directory in our root project, 
 
 - Change the `datasource db provider` from `sqlite` to `postgresql`
 
-If you look closely, you'll see the `datasource db` already pulls the database url from our environment file with the key `DATABASE_URL`. Since we already updated this to our `ElephantSQL` URL, we are good to go.
+If you look closely, you'll see the `datasource db url` already reads the database url from our environment file with the key `DATABASE_URL`. Since we already updated this to our `ElephantSQL` URL, we are good to go.
 
 ### Adding User, Mention and Note models
 
 In our `schema.prisma` file above we have a default `UserExample` model, replace the default model code in our file with the code below:
 
 ```
+// api/db/schema.prisma
+
 model User {
   id        Int       @id @default(autoincrement())
   firstName String
@@ -129,8 +138,8 @@ model User {
 model Note {
   id        Int       @id @default(autoincrement())
   content   String
-  author    User?     @relation(fields: [authorId], references: [id])
-  authorId  Int?
+  author    User      @relation(fields: [authorId], references: [id])
+  authorId  Int
   mentions  Mention[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -141,10 +150,10 @@ model Note {
 
 model Mention {
   id                Int      @id @default(autoincrement())
-  mentionedUser     User?    @relation(fields: [mentionedUsername], references: [username])
-  mentionedUsername String?
-  note              Note?    @relation(fields: [noteId], references: [id])
-  noteId            Int?
+  mentionedUser     User     @relation(fields: [mentionedUsername], references: [username])
+  mentionedUsername String
+  note              Note     @relation(fields: [noteId], references: [id])
+  noteId            Int
   createdAt         DateTime @default(now())
 
   @@unique([mentionedUsername, noteId])
@@ -155,6 +164,34 @@ model Mention {
 The code above creates User, Note and Mention models for our db schema. To understand how we created the schema above please refer to the [Prisma Schema Docs](https://www.prisma.io/docs/concepts/components/prisma-schema).
 
 ### Generating Database Migrations and Models for our Redwood App
+Now we have to migrate our database models so it can be in sync with Prisma and write to our database in `ElephantSQL`.
+
+Run the command below to migrate our database:
+```
+yarn redwood prisma migrate dev
+```
+
+> Note: You are likely to run into an error like this: ![migrate error](images/migrate-error.png)
+If you do, do not fret. We just need to perform some minor configurations.
+
+> If you encounter the error above, refer to the section directly below on how to fix it, otherwise continue to the next section.
+### Resolve Prisma Migration Error
+In Prisma, when we run development-focused commands like `prisma migrate dev`, Prisma uses a second temporary database called `shadow database` to monitor and detect problems.
+
+> The shadow database is not required when running production commands like `prisma migrate deploy`.
+
+Another caveat is that since we are using a cloud database like `ElephantSQL` we will have to create this `shadow database` manually. What better way to do that than to use `ElephantSQL` like we did when we created our main database.
+
+> Please run through the database creation steps we used earlier to create a second database on `ElephantSQL` and get the URL for this database ready for use.
+
+Once you have successfully created the shadow database, follow the steps below:
+
+- Add this line `shadowDatabaseUrl = env("SHADOW_DATABASE_URL")` inside your `schema.prisma` file
+- Go to your `.env` file and add the variable `SHADOW_DATABASE_URL` to it
+- Copy the URL of your shadow database from your ElephantSQL Console and paste it as the value of the `SHADOW_DATABASE_URL` variable
+
+
+<!-- https://pris.ly/d/migrate-shadow -->
 
 ### Viewing our database in Heroku Dashboard
 
