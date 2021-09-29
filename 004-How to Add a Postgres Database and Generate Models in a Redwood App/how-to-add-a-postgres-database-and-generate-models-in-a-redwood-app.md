@@ -215,13 +215,20 @@ Congratulations! You have successfully added a postgres database to your Redwood
 For a job well done, you deserve a ☕.
 
 ## Conclusion
-
 ### Summary
+In this article we learned:
+- how to create a cloud postgres database on Heroku
+- adding our cloud database to our Redwood app
+- resolving prisma migrate error with our cloud database
+- performing database migration using the `yarn rw prisma dev` command, and
+- viewing our migration status on Heroku.
+
+> Note: For a more concise way of managing your sql database, I recommend using a more compact database management system like [DBeaver](https://dbeaver.io/) or Redwood's recommended [Beekeeper Studio](https://www.beekeeperstudio.io/) and [TablePlus](https://tableplus.com/).
 
 ### Resources
 - [SQL Table Relationships Explained](https://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561)
-- [Prisma Docs]()
-- [Heroku Website]()
+- [Prisma Migrate Docs](https://www.prisma.io/docs/concepts/components/prisma-migrate)
+- [Heroku Website](https://www.heroku.com/)
 
 ### GitHub Repo
 
