@@ -81,18 +81,27 @@ Personally, before I start writing my database tables, I use a tool called [DB D
 
 As we are building a journaling application, we reckon we will need the following features:
 - user account creation
-- notes creation where users can be mentioned inside of notes.
+- notes creation where users can be mentioned inside of notes, plus the ability to update, query and delete notes.
 
 So with this in mind, we came up with the following database model using db diagram:
 ![thankful models](images/thankful-model.png)
+
+A straight forward explanation for the above model goes like this:
+- users table (user creates account)
+- notes table (user creates a note and becomes the author of that note)
+- mentions table (user can mention another user when creating a note)
+
+Since a user can be mentioned in multiples by different authors, and we can have multiple mentioned users in a single note, then it makes sense to have a mentions table to connect mentioned users to the notes they are mentioned in.
+
+For more on table relationships, refer to the resources section in this post.
 
 ### Replacing Redwood default DB engine with postgres
 To locate our schema file, from inside the `api` directory in our root project, open up the `db` directory and you'll find a `schema.prisma` file. The contents of our default `schema.prisma` file looks like this:
 ![prisma schema file](images/prisma-schema-file.png)
 
-- Change the `datasource provider` from `sqlite` to `postgresql`
+- Change the `datasource db provider` from `sqlite` to `postgresql`
 
-If you look closely, you'll see the `datasource db` already pulls the database url from our environment file with the key `DATABASE_URL`. Since we already updated this our `elephantsql` url, we are good to go. 
+If you look closely, you'll see the `datasource db` already pulls the database url from our environment file with the key `DATABASE_URL`. Since we already updated this to our `ElephantSQL` URL, we are good to go.
 
 ### Adding User, Mention and Note models
 ### Generating Database Migrations and Models for our Redwood App
@@ -102,6 +111,7 @@ If you look closely, you'll see the `datasource db` already pulls the database u
 
 ### Summary
 ### Resources
+- [SQL Table Relationships Explained](https://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561)
 ### GitHub Repo
 [Thankful App](https://github.com/evansibok/thankful)
 
