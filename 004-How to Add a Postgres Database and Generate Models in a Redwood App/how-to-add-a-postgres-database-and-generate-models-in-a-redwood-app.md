@@ -122,7 +122,7 @@ In our `schema.prisma` file above we have a default `UserExample` model, replace
 // api/db/schema.prisma
 
 model User {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(uuid())
   firstName String
   lastName  String
   email     String    @unique
@@ -138,10 +138,10 @@ model User {
 }
 
 model Note {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(uuid())
   content   String
   author    User      @relation(fields: [authorId], references: [id])
-  authorId  Int
+  authorId  String
   mentions  Mention[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -151,11 +151,11 @@ model Note {
 }
 
 model Mention {
-  id                Int      @id @default(autoincrement())
+  id                String   @id @default(uuid())
   mentionedUser     User     @relation(fields: [mentionedUsername], references: [username])
   mentionedUsername String
   note              Note     @relation(fields: [noteId], references: [id])
-  noteId            Int
+  noteId            String
   createdAt         DateTime @default(now())
 
   @@unique([mentionedUsername, noteId])
