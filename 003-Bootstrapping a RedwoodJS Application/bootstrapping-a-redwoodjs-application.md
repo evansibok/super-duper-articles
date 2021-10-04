@@ -63,7 +63,7 @@ Redwood uses Yarn to initialize an application and requires the following versio
 
 ```
 node =14.x
-yarn >=1.15
+yarn =1.x
 ```
 
 - Run the command below in your terminal to create a new Redwood app:
